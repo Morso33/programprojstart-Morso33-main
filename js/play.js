@@ -88,18 +88,19 @@ var playState = {
 	UpdateCoinPosition: function() {
 
 
-		if(amountOfCoins < maxAmountOfCoins){
+
 			console.log(amountOfCoins)
 			coinPositionX = Math.floor(Math.random() * 450);
 			coinPositionY = Math.floor(Math.random() * 300);
-			amountOfCoins++;
+
             game.add.sprite(coinPositionX, coinPositionY, 'pixel', 0, this.coin);
 			//this.coin = game.add.sprite(coinPositionX, coinPositionY, "pixel")
 
-		}
+		
 	},
 	takeCoin: function(player, coin) {
 		console.log("called func")
+        this.UpdateCoinPosition();
     },
 
 
