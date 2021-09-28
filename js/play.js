@@ -29,7 +29,7 @@ var playState = {
 
     update: function() {
         game.physics.arcade.collide(this.player, this.walls);
-		game.physics.arcade.collide(this.player, this.coin, this.takeCoin, null, this);
+		game.physics.arcade.overlap(this.player, this.coin, this.takeCoin, null, this);
         game.physics.arcade.overlap(this.walls, this.coin, this.coinSpawnFailed, null, this);
 
 
