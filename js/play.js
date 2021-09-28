@@ -22,6 +22,9 @@ var playState = {
 
 
         this.createWorld();
+
+        this.UpdateCoinPosition();
+
     },
 
     update: function() {
@@ -29,15 +32,11 @@ var playState = {
 		game.physics.arcade.collide(this.player, this.coin, this.takeCoin, null, this);
         //game.physics.arcade.collide(this.player, this.coin);
 
-
-
-
         this.movePlayer();
 
         if (!this.player.inWorld) {
             this.playerDie();
         }
-		this.UpdateCoinPosition();
 
     },
 
@@ -85,6 +84,8 @@ var playState = {
         this.walls.setAll('body.immovable', true);
     },
 
+    
+
 	UpdateCoinPosition: function() {
 
 
@@ -92,15 +93,17 @@ var playState = {
 			console.log(amountOfCoins)
 			coinPositionX = Math.floor(Math.random() * 450);
 			coinPositionY = Math.floor(Math.random() * 300);
-
+			amountOfCoins++;
             game.add.sprite(coinPositionX, coinPositionY, 'pixel', 0, this.coin);
-			//this.coin = game.add.sprite(coinPositionX, coinPositionY, "pixel")
 
+
+            
 		
 	},
 	takeCoin: function(player, coin) {
 		console.log("called func")
         this.UpdateCoinPosition();
+        coin.reset(20,20)
     },
 
 
