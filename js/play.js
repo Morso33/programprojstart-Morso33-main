@@ -24,7 +24,8 @@ var playState = {
         this.createWorld();
 
         this.UpdateCoinPosition();
-
+        
+        game.add.sprite(120, 100, 'pixel', 0, this.coin);
     },
 
     update: function() {
@@ -90,20 +91,17 @@ var playState = {
 
 
 
-			console.log(amountOfCoins)
-			coinPositionX = Math.floor(Math.random() * 450);
-			coinPositionY = Math.floor(Math.random() * 300);
-			amountOfCoins++;
-            game.add.sprite(coinPositionX, coinPositionY, 'pixel', 0, this.coin);
-
+        console.log("called upcoin")
+        //this.takeCoin();
 
             
 		
 	},
 	takeCoin: function(player, coin) {
 		console.log("called func")
-        this.UpdateCoinPosition();
-        coin.reset(20,20)
+        coinPositionX = Math.floor(Math.random() * 450);
+        coinPositionY = Math.floor(Math.random() * 300);
+        coin.reset(coinPositionX,coinPositionY)
     },
 
 
