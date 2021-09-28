@@ -26,7 +26,9 @@ var playState = {
 
     update: function() {
         game.physics.arcade.collide(this.player, this.walls);
-		game.physics.arcade.collide(this.player, this.pixel, this.takeCoin, null, this);
+		game.physics.arcade.collide(this.player, this.coin, this.takeCoin, null, this);
+        //game.physics.arcade.collide(this.player, this.coin);
+
 
 
 
@@ -65,12 +67,16 @@ var playState = {
         this.walls = game.add.group();
         this.walls.enableBody = true;
 
+        this.coin = game.add.group();
+        this.coin.enableBody = true;
+
 
 
         game.add.sprite(0, 0, 'wallh', 0, this.walls);
         game.add.sprite(300, 0, 'wallh', 0, this.walls);
         game.add.sprite(0, 320, 'wallh', 0, this.walls);
         game.add.sprite(300, 320, 'wallh', 0, this.walls);
+
 
 
 
@@ -87,8 +93,8 @@ var playState = {
 			coinPositionX = Math.floor(Math.random() * 450);
 			coinPositionY = Math.floor(Math.random() * 300);
 			amountOfCoins++;
-
-			this.coin = game.add.sprite(coinPositionX, coinPositionY, "pixel")
+            game.add.sprite(coinPositionX, coinPositionY, 'pixel', 0, this.coin);
+			//this.coin = game.add.sprite(coinPositionX, coinPositionY, "pixel")
 
 		}
 	},
