@@ -15,7 +15,6 @@ var loadState = {
 		game.load.image("wallh", "assets/images/wallh.png")
 		game.load.image("wallw", "assets/images/wallv.png")
 		game.load.image("pixel", "assets/images/pixel.png")
-		game.load.image("coin", "assets/images/coin.png")
 		// ...
 	},
 

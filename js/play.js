@@ -3,6 +3,7 @@ var coinPositionX
 var coinPositionY
 var amountOfCoins = 0;
 var maxAmountOfCoins = 10;
+var score = 0;
 
 
 
@@ -11,7 +12,6 @@ var playState = {
 
     create: function() { 
         console.log("Spelet har startat");
-        
         this.cursor = game.input.keyboard.createCursorKeys();
         this.coin = game.add.sprite(30, 30, "pixel");
         this.add.image(0, 0, "background")
@@ -22,7 +22,7 @@ var playState = {
 
 
         this.createWorld();
-
+        this.scoreLabel = game.add.text(30, 30, 'Score: 0', {font: '16px Arial', fill: '#ffffff'});
         
         game.add.sprite(120, 100, 'pixel', 0, this.coin);
     },
@@ -31,8 +31,6 @@ var playState = {
         game.physics.arcade.collide(this.player, this.walls);
 		game.physics.arcade.overlap(this.player, this.coin, this.takeCoin, null, this);
         game.physics.arcade.overlap(this.walls, this.coin, this.coinSpawnFailed, null, this);
-
-
         this.movePlayer();
 
         if (!this.player.inWorld) {
@@ -96,10 +94,19 @@ var playState = {
 
 
 	takeCoin: function(player, coin) {
+
+        
 		console.log("called func")
+
         coinPositionX = Math.floor(Math.random() * 450);
         coinPositionY = Math.floor(Math.random() * 300);
         coin.reset(coinPositionX,coinPositionY)
+        score++
+        console.log("score "+ score)
+        this.scoreLabel.text = 'Score: ' + score;
+
+        
+
     },
 
 
