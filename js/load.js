@@ -15,6 +15,7 @@ var loadState = {
 		game.load.image("wallh", "assets/images/wallh.png")
 		game.load.image("wallw", "assets/images/wallv.png")
 		game.load.image("pixel", "assets/images/pixel.png")
+		this.game.load.audio('beef', "assets/images/sound.wav");
 		// ...
 	},
 

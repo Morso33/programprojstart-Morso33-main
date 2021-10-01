@@ -1,9 +1,8 @@
 
 var coinPositionX
 var coinPositionY
-var amountOfCoins = 0;
-var maxAmountOfCoins = 10;
 var score = 0;
+var isMuted = false;
 
 
 
@@ -57,7 +56,6 @@ var playState = {
     },
 
     playerDie: function() {
-		amountOfCoins = 0;
         game.state.start('menu');
     },
 
@@ -96,7 +94,11 @@ var playState = {
 
 	takeCoin: function(player, coin) {
 
-        
+        if(!isMuted){
+            this.beef = game.add.audio('beef');
+            this.beef.play();
+        }
+
 		console.log("GOT COIN")
         coin.reset(1000, 1000);
         coinPositionX = Math.floor(Math.random() * 450);
