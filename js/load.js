@@ -19,6 +19,7 @@ var loadState = {
 		this.game.load.audio('beef', "assets/images/sound.wav");
 		this.game.load.audio('bell', "assets/images/bell.mp3");
 		this.game.load.audio('jump', "assets/images/jump.wav");
+		this.game.load.audio('music', "assets/images/bgm.wav");
 		// ...
 	},
 

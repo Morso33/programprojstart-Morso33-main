@@ -4,6 +4,7 @@ var coinPositionY
 var score = 0;
 var isMuted = 0;
 var muteInteger = 1;
+var mAudioLevel = 0.1
 
 
 
@@ -33,6 +34,7 @@ var playState = {
         //ini mute
         this.toggleSound()
         this.toggleSound()
+
 
         
     },
@@ -95,6 +97,7 @@ var playState = {
         if (muteInteger%2 != 0){
             isMuted = 0;
             console.log("unmute")
+            
         }
     },
 
