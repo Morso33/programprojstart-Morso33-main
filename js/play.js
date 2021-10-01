@@ -2,12 +2,17 @@
 var coinPositionX
 var coinPositionY
 var score = 0;
-var isMuted = false;
+var isMuted = 0;
+var muteInteger = 2;
 
 
 
 
 var playState = {
+
+
+
+
 
     create: function() { 
         score = 0;
@@ -18,14 +23,20 @@ var playState = {
         this.player.anchor.setTo(0.5, 0.5);
         game.physics.arcade.enable(this.player);
         this.player.body.gravity.y = 250;
-
-
         this.createWorld();
         this.scoreLabel = game.add.text(30, 30, 'Score: 0', {font: '16px Arial', fill: '#ffffff'});
         coinPositionX = Math.floor(Math.random() * 450);
         coinPositionY = Math.floor(Math.random() * 300);
         game.add.sprite(coinPositionX, coinPositionY, 'pixel', 0, this.coin);
+        this.muteButton = game.add.button(20, 20, 'mute', this.toggleSound, this);
+        this.muteButton.input.useHandCursor = true;
+
+
+        
     },
+
+
+
 
     update: function() {
         game.physics.arcade.collide(this.player, this.walls);
@@ -38,6 +49,8 @@ var playState = {
         }
 
     },
+
+    
 
     movePlayer: function() {
         if (this.cursor.left.isDown) {
@@ -57,6 +70,25 @@ var playState = {
 
     playerDie: function() {
         game.state.start('menu');
+    },
+    
+
+    
+    toggleSound: function() {
+        console.log("button")
+        muteInteger++
+        if (muteInteger%2 == 0){
+            console.log("unmute")
+            isMuted = 1;
+        }
+
+        if (muteInteger%2 != 0){
+            isMuted = 0;
+            console.log("mute")
+        }
+        
+        
+        
     },
 
     createWorld: function() {
@@ -94,7 +126,7 @@ var playState = {
 
 	takeCoin: function(player, coin) {
 
-        if(!isMuted){
+        if(isMuted == 0){
             this.beef = game.add.audio('beef');
             this.beef.play();
         }
@@ -111,6 +143,8 @@ var playState = {
         
 
     },
+
+
 
 
 
