@@ -10,5 +10,6 @@ var bootState = {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		console.log("CURRENT SCENE: BOOT")
 		game.state.start('load');
+
 	}
 };

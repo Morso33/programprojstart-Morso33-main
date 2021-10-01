@@ -20,7 +20,13 @@ var loadState = {
 		this.game.load.audio('bell', "assets/images/bell.mp3");
 		this.game.load.audio('jump', "assets/images/jump.wav");
 		this.game.load.audio('music', "assets/images/bgm.wav");
-		// ...
+
+		//loadbar
+		game.load.image("fill", "assets/images/fill.png")
+		game.load.image("empty", "assets/images/empty.png")
+
+
+
 	},
 
 	create: function() { 

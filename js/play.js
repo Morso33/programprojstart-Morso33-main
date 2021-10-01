@@ -4,7 +4,8 @@ var coinPositionY
 var score = 0;
 var isMuted = 0;
 var muteInteger = 1;
-var mAudioLevel = 0.1
+var mainMusicPlay = 1
+var progressBarProgress = -10
 
 
 
@@ -36,13 +37,23 @@ var playState = {
         this.toggleSound()
 
 
-        
+        //progress static
+        game.add.sprite(0, 315, 'empty', 0, this.walls);
     },
 
 
 
 
     update: function() {
+
+
+
+        if(mainMusicPlay == 0){
+            if(isMuted == 0){
+                mainMusicPlay = 1;
+            }
+
+        }
         game.physics.arcade.collide(this.player, this.walls);
 		game.physics.arcade.overlap(this.player, this.coin, this.takeCoin, null, this);
         game.physics.arcade.overlap(this.walls, this.coin, this.coinSpawnFailed, null, this);
@@ -107,14 +118,16 @@ var playState = {
         this.walls.enableBody = true;
 
         this.coin = game.add.group();
+        this.fill = game.add.group();
         this.coin.enableBody = true;
+        this.fill.enableBody = true;
 
 
 
         game.add.sprite(0, 0, 'wallh', 0, this.walls);
         game.add.sprite(300, 0, 'wallh', 0, this.walls);
-        game.add.sprite(0, 320, 'wallh', 0, this.walls);
-        game.add.sprite(300, 320, 'wallh', 0, this.walls);
+        game.add.sprite(0, 320, 'empty', 0, this.walls);
+        game.add.sprite(300, 320, 'empty', 0, this.walls);
 
 
 
@@ -131,10 +144,9 @@ var playState = {
         coin.reset(coinPositionX,coinPositionY)
     },
 
-    
 
 
-	takeCoin: function(player, coin) {
+	takeCoin: function(player, coin, fill) {
 
         if(isMuted == 0){
             this.beef = game.add.audio('beef');
@@ -149,10 +161,14 @@ var playState = {
         score++
         console.log("score "+ score)
         this.scoreLabel.text = 'Score: ' + score;
-        
+        progressBarProgress++
+        //label dynamic
+        game.add.sprite(progressBarProgress * 10,  320, 'fill', 0, this.walls);
+
         
 
     },
+
 
 
 
