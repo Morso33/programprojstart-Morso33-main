@@ -3,7 +3,7 @@ var coinPositionX
 var coinPositionY
 var score = 0;
 var isMuted = 0;
-var muteInteger = 2;
+var muteInteger = 1;
 
 
 
@@ -30,7 +30,9 @@ var playState = {
         game.add.sprite(coinPositionX, coinPositionY, 'pixel', 0, this.coin);
         this.muteButton = game.add.button(20, 20, 'mute', this.toggleSound, this);
         this.muteButton.input.useHandCursor = true;
-
+        //ini mute
+        this.toggleSound()
+        this.toggleSound()
 
         
     },
@@ -78,13 +80,13 @@ var playState = {
         console.log("button")
         muteInteger++
         if (muteInteger%2 == 0){
-            console.log("unmute")
+            console.log("mute")
             isMuted = 1;
         }
 
         if (muteInteger%2 != 0){
             isMuted = 0;
-            console.log("mute")
+            console.log("unmute")
         }
         
         
