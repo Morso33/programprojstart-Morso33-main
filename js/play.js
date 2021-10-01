@@ -67,15 +67,19 @@ var playState = {
 
         if (this.cursor.up.isDown && this.player.body.touching.down) {
             this.player.body.velocity.y = -320;
+            if(isMuted == 0){
             this.jump = game.add.audio('jump');
             this.jump.play();
+            }
         }
     },
 
     playerDie: function() {
         game.state.start('menu');
+        if(isMuted == 0){
         this.dead = game.add.audio('bell');
         this.dead.play();
+        }
     },
     
 
