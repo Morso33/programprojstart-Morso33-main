@@ -67,11 +67,15 @@ var playState = {
 
         if (this.cursor.up.isDown && this.player.body.touching.down) {
             this.player.body.velocity.y = -320;
+            this.jump = game.add.audio('jump');
+            this.jump.play();
         }
     },
 
     playerDie: function() {
         game.state.start('menu');
+        this.dead = game.add.audio('bell');
+        this.dead.play();
     },
     
 
@@ -88,9 +92,6 @@ var playState = {
             isMuted = 0;
             console.log("unmute")
         }
-        
-        
-        
     },
 
     createWorld: function() {

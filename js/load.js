@@ -17,6 +17,8 @@ var loadState = {
 		game.load.image("pixel", "assets/images/pixel.png")
 		//game.load.image("mute", "assets/images/mute.png")
 		this.game.load.audio('beef', "assets/images/sound.wav");
+		this.game.load.audio('bell', "assets/images/bell.mp3");
+		this.game.load.audio('jump', "assets/images/jump.wav");
 		// ...
 	},
 
