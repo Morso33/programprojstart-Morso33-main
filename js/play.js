@@ -38,7 +38,8 @@ var playState = {
 
 
         //progress static
-        game.add.sprite(0, 315, 'empty', 0, this.walls);
+        game.add.sprite(0, 330, 'empty', 0, this.walls);
+        game.add.sprite(-95,  320, 'fill', 0, this.walls);
     },
 
 
@@ -46,6 +47,10 @@ var playState = {
 
     update: function() {
 
+
+        if(score > 20){
+            game.state.start('menu');
+        }
 
 
         if(mainMusicPlay == 0){
@@ -164,6 +169,7 @@ var playState = {
         progressBarProgress++
         //label dynamic
         game.add.sprite(progressBarProgress * 10,  320, 'fill', 0, this.walls);
+
 
         
 
